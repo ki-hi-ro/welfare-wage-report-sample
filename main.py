@@ -413,13 +413,6 @@ annual_wage_total = valid_wages["工賃額"].sum()
 # サンプルでは1行 = 1利用者 × 1利用日として集計
 annual_usage_total = len(usage_df)
 
-print("\n=== 行政報告用集計 ===")
-print(f"定員: {capacity}")
-print(f"年間工賃支払総額: {annual_wage_total}")
-print(f"年間利用者延べ人数: {annual_usage_total}")
-print(f"年間開所日数: {opening_days}")
-print(f"年間開所月数: {opening_months}")
-
 
 # ==============================
 # 12. エラー・要確認一覧を出力
@@ -515,20 +508,6 @@ city_ws["G8"] = opening_months
 
 
 # ==============================
-# 行政様式の既存数式を確認
-# ==============================
-
-print("\n=== 名古屋市Excel ===")
-print(f"B8 定員: {city_ws['B8'].value}")
-print(f"C8 年間工賃支払総額: {city_ws['C8'].value}")
-print(f"D8 年間利用者延べ人数: {city_ws['D8'].value}")
-print(f"E8 年間開所日数: {city_ws['E8'].value}")
-print(f"F8 平均利用者数: {city_ws['F8'].value}")
-print(f"G8 年間開所月数: {city_ws['G8'].value}")
-print(f"H8 工賃平均額: {city_ws['H8'].value}")
-
-
-# ==============================
 # 保存
 # ==============================
 
@@ -542,6 +521,14 @@ city_wb.save(
 # ==============================
 
 print("\n処理が完了しました")
+
+print("\n=== 集計結果 ===")
+print(f"年間工賃支払総額: {annual_wage_total:,.0f}円")
+print(f"年間利用者延べ人数: {annual_usage_total:,}人")
+print(f"年間開所日数: {opening_days:,}日")
+print(f"年間開所月数: {opening_months}か月")
+
+print("\n=== 出力ファイル ===")
 print(f"エラー・要確認一覧: {ERROR_OUTPUT}")
 print(f"月別集計: {MONTHLY_OUTPUT}")
 print(f"行政提出用: {CITY_OUTPUT}")
