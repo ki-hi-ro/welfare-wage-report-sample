@@ -1,0 +1,6 @@
+venv/
+__pycache__/
+.DS_Store
+~$*
+
+input/名古屋市_工賃実績報告.xlsx
